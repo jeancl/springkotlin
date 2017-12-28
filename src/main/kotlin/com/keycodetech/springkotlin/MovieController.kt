@@ -1,9 +1,6 @@
 package springkotlin
 
-import org.springframework.web.bind.annotation.CrossOrigin
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 class MoviesController(private val repository: MoviesRepository) {
@@ -12,6 +9,11 @@ class MoviesController(private val repository: MoviesRepository) {
     @GetMapping("/api/movies")
     fun findAll()
             = repository.findAll()
+
+    @CrossOrigin
+    @RequestMapping("/api/movies", method = arrayOf(RequestMethod.POST))
+    fun create(@RequestBody movie:Movie)
+            = repository.save(movie)
 
     @CrossOrigin
     @GetMapping("/api/movies/{title}")
