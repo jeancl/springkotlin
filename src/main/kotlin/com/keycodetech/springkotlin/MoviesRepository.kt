@@ -2,8 +2,8 @@ package springkotlin
 
 import org.springframework.data.repository.CrudRepository
 
-interface MoviesRepository : CrudRepository<Movie, Long>{
+interface MoviesRepository : CrudRepository<Movie, String>{
 
-    fun findByTitle(title: String): List<Movie>
+    fun findByTitle(title: String): Movie
 
 }

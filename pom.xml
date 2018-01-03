@@ -124,6 +124,12 @@
             <!-- Uncomment line below to use standalone MongoDB in production -->
             <!-- <scope>test</scope> -->
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.eclipse.persistence/javax.persistence -->
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>javax.persistence</artifactId>
+            <version>2.2.0</version>
+        </dependency>
     </dependencies>
 
     <build>

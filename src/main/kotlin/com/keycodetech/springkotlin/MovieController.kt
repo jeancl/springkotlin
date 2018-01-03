@@ -16,7 +16,7 @@ class MoviesController(private val repository: MoviesRepository) {
             = repository.save(movie)
 
     @CrossOrigin
-    @GetMapping("/api/movies/{title}")
+    @GetMapping("/api/movies/search/{title}")
     fun findByTitle(@PathVariable title:String)
             = repository.findByTitle(title)
 
