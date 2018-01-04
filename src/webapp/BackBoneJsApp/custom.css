@@ -1,0 +1,15 @@
+#movies-list input.edit {
+  display: none; /* Hides input box*/
+}
+#movies-list .editing label {
+  display: none; /* Hides label text when .editing*/
+}
+#movies-list .editing input.edit {
+  display: inline; /* Shows input text box when .editing*/
+}
+#movies-list input.editDate {
+  display: none; /* Hides input box*/
+}
+#movies-list .editing input.editDate {
+  display: inline; /* Shows input text box when .editing*/
+}
