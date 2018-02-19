@@ -1,13 +1,15 @@
-package springkotlin
+package com.keycodetech.springkotlin
 
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.SpringApplication
-import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.ComponentScan
 import java.sql.Date
 import java.time.LocalDate
 
-@SpringBootApplication
+@EnableAutoConfiguration
+@ComponentScan
 class Application {
 
     //Initializer

@@ -1,4 +1,4 @@
-package springkotlin
+package com.keycodetech.springkotlin
 
 import org.springframework.data.repository.CrudRepository
 

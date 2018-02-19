@@ -1,4 +1,4 @@
-package springkotlin
+package com.keycodetech.springkotlin
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.junit.jupiter.api.Assertions.*

@@ -1,4 +1,4 @@
-package springkotlin
+package com.keycodetech.springkotlin
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.index.Indexed
