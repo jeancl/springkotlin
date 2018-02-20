@@ -3,15 +3,17 @@ package com.keycodetech.springkotlin
 import com.keycodetech.springkotlin.exceptions.NotFoundException
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.CrossOrigin
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 import java.net.URI
 import java.util.Optional
+import javax.validation.Valid
 
 @RestController
 class MoviesController(private val repository: MoviesRepository) {
@@ -22,8 +24,8 @@ class MoviesController(private val repository: MoviesRepository) {
 			= repository.findAll()
 
 	@CrossOrigin
-	@RequestMapping("/api/movies", method = arrayOf(RequestMethod.POST))
-	fun create(@RequestBody movie: Movie): ResponseEntity<Any> {
+	@PostMapping("/api/movies")
+	fun create(@Valid @RequestBody movie: Movie): ResponseEntity<Any> {
 		val savedMovie = repository.save(movie)
 
 		val location: URI = ServletUriComponentsBuilder
@@ -36,7 +38,7 @@ class MoviesController(private val repository: MoviesRepository) {
 	}
 
 	@CrossOrigin
-	@RequestMapping("/api/movies/{id}", method = arrayOf(RequestMethod.PUT))
+	@PutMapping("/api/movies/{id}")
 	fun update(@RequestBody movie: Movie)
 			= repository.save(movie)
 
@@ -57,7 +59,13 @@ class MoviesController(private val repository: MoviesRepository) {
 	}
 
 	@CrossOrigin
-	@RequestMapping("/api/movies/{id}", method = arrayOf(RequestMethod.DELETE))
-	fun remove(@PathVariable id: String)
-			= repository.deleteById(id)
+	@DeleteMapping("/api/movies/{id}")
+	fun remove(@PathVariable id: String) {
+		
+		if(!repository.existsById(id))
+			throw NotFoundException(String.format("id-%s",id))
+		
+		repository.deleteById(id)
+	}
+
 }
